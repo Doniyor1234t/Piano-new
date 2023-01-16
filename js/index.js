@@ -38,15 +38,6 @@ playbtn.addEventListener('click', () => {
 	}
 })
 
-const faqs = document.querySelectorAll(".faq__block");
-
-faqs.forEach(faq => {
-	faq.addEventListener('click', () => {
-		faq.classList.toggle("active");
-	})
-})
-
-
 const C4 = new Audio("./audio/sounds/C4.mp3");
 const Db4 = new Audio("./audio/sounds/Db4.mp3");
 const D4 = new Audio("./audio/sounds/D4.mp3");
@@ -217,3 +208,37 @@ window.addEventListener("keydown", ({ keyCode }) => {
 	if (keyCode === 74) return playB4();
 
 }); 
+
+//-------------------------------
+
+// const faqs = document.querySelectorAll(".faq__block");
+// const faqButton = document.querySelector(".faq__question")
+// faqs.forEach(faq => {
+// 	faq.addEventListener('click', () => {
+// 		if (faq.classList.contains("active")) {
+// 			faq.classList.remove("active");
+// 		  } else {
+// 			faq.classList.add("active");
+// 		  }
+// 	})
+// })
+document.addEventListener("DOMContentLoaded", function(event) { 
+
+
+	const acc = document.getElementsByClassName("faq__block");
+	const panel = document.getElementsByClassName('faq__question');
+	for (let i = 0; i < acc.length; i++) {
+		panel[i].onclick = function() {
+			const setClasses = !acc[i].classList.contains('active');
+			setClass(acc, 'active', 'remove');
+			if (setClasses) {
+				acc[i].classList.add("active");
+			}
+		}
+	}
+	function setClass(els, className, fnName) {
+		for (let i = 0; i < els.length; i++ ) {
+			els[i].classList[fnName](className);
+		}
+	}
+});
